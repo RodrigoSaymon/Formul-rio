@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_const
+
 import 'package:formulario/modeis/user.dart';
 
 const DUMMY_USERS = {

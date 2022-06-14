@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:formulario/componets/user_tale.dart';
-
-import 'package:formulario/data/dammy_users.dart';
+import 'package:formulario/provider/users.dart';
+import 'package:provider/provider.dart';
+import '../modeis/user.dart';
 
 class UserList extends StatelessWidget {
   const UserList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final users = {...DUMMY_USERS};
+    final Users users = Provider.of(context);
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Lista de Usuários'),
-        actions: <Widget>[IconButton(onPressed: () {}, icon: Icon(Icons.add))],
+        actions: <Widget>[
+          IconButton(
+              onPressed: () {
+                users.put(User('id', 'Teste', 'email@teste.com', ''));
+              },
+              icon: Icon(Icons.add))
+        ],
       ),
       body: ListView.builder(
-        itemCount: users.length,
-        itemBuilder: (ctx, i) => UserTile(users.values.elementAt(i)),
+        itemCount: users.count,
+        itemBuilder: (ctx, i) => UserTile(users.byIndex(i)),
       ),
     );
   }
