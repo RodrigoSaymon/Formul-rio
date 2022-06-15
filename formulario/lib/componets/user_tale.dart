@@ -4,7 +4,7 @@ import '../modeis/user.dart';
 
 class UserTile extends StatelessWidget {
   final User user;
-  UserTile(this.user);
+  const UserTile(this.user);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class UserTile extends StatelessWidget {
         // ignore: prefer_const_constructors
         ? CircleAvatar(child: Icon(Icons.person))
         // ignore: prefer_const_constructors
-        : CircleAvatar(backgroundImage: NetworkImage('user.avatarUrl'));
+        : CircleAvatar(backgroundImage: NetworkImage(user.avatarUrl));
 
     return ListTile(
       leading: avartar,

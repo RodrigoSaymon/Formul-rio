@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:formulario/componets/user_tale.dart';
 import 'package:formulario/provider/users.dart';
 import 'package:provider/provider.dart';
+
 import '../modeis/user.dart';
 
 class UserList extends StatelessWidget {
@@ -16,10 +17,12 @@ class UserList extends StatelessWidget {
         title: Text('Lista de Usuários'),
         actions: <Widget>[
           IconButton(
-              onPressed: () {
-                users.put(User('id', 'Teste', 'email@teste.com', ''));
-              },
-              icon: Icon(Icons.add))
+            onPressed: () {
+              // users.remove(users.byIndex(0));
+              users.put(User('id', 'Teste', 'email@teste.com', ''));
+            },
+            icon: Icon(Icons.add),
+          ),
         ],
       ),
       body: ListView.builder(

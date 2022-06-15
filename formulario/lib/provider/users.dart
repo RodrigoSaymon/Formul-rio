@@ -16,6 +16,13 @@ class Users with ChangeNotifier {
     return _itens.length;
   }
 
+  void remove(User user) {
+    if (user != null && user.id != null) {
+      _itens.remove(user.id);
+      notifyListeners();
+    }
+  }
+
   User byIndex(int i) {
     return _itens.values.elementAt(i);
   }
@@ -37,13 +44,6 @@ class Users with ChangeNotifier {
           id, () => User(id, user.nome, user.email, user.avatarUrl));
 
       notifyListeners();
-    }
-
-    void remove(User user) {
-      if (user != null && user.id != null) {
-        _itens.remove(user.id);
-        notifyListeners();
-      }
     }
   }
 }
