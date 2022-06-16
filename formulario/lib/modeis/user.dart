@@ -6,10 +6,6 @@ class User {
   final String email;
   final String avatarUrl;
 
-  const User(
-    this.id,
-    @required this.nome,
-    @required this.email,
-    @required this.avatarUrl,
-  );
+  const User(@required this.id, @required this.nome, @required this.email,
+      @required this.avatarUrl);
 }

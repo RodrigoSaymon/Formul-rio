@@ -1,10 +1,7 @@
 import 'dart:math';
-import '../modeis/user.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:formulario/data/dammy_users.dart';
 import 'package:formulario/modeis/user.dart';
-
-// final usuario = User;
 
 class Users with ChangeNotifier {
   final Map<String, User> _itens = {...DUMMY_USERS};
@@ -14,13 +11,6 @@ class Users with ChangeNotifier {
 
   int get count {
     return _itens.length;
-  }
-
-  void remove(User user) {
-    if (user != null && user.id != null) {
-      _itens.remove(user.id);
-      notifyListeners();
-    }
   }
 
   User byIndex(int i) {
@@ -36,13 +26,23 @@ class Users with ChangeNotifier {
         user.id.trim().isNotEmpty &&
         _itens.containsKey(user.id)) {
       _itens.update(
-          user.id, (_) => User(user.id, user.nome, user.email, user.avatarUrl));
+        user.id,
+        (_) => User(user.id, user.nome, user.email, user.avatarUrl),
+      );
     } else {
       final id = Random().nextDouble().toString();
 
       _itens.putIfAbsent(
-          id, () => User(id, user.nome, user.email, user.avatarUrl));
+        id,
+        () => User(id, user.nome, user.email, user.avatarUrl),
+      );
+    }
+    notifyListeners();
+  }
 
+  void remove(User user) {
+    if (user != null && user.id != null) {
+      _itens.remove(user.id);
       notifyListeners();
     }
   }
